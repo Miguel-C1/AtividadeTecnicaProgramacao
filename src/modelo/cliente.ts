@@ -6,6 +6,7 @@ import Servico from "./servico"
 import Telefone from "./telefone"
 
 export default class Cliente {
+    private idCliente: number
     public nome: string
     public nomeSocial: string
     private cpf: CPF
@@ -15,7 +16,8 @@ export default class Cliente {
     private produtosConsumidos: Array<Produto>
     private servicosConsumidos: Array<Servico>
     private pets: Array<Pet>
-    constructor(nome: string, nomeSocial: string, cpf: CPF, telefones: Array<Telefone>, pet: Array<Pet>) {
+   
+    constructor(nome: string, nomeSocial: string, cpf: CPF, telefones: Array<Telefone>, pet: Array<Pet>, idCliente: number) {
         this.nome = nome
         this.nomeSocial = nomeSocial
         this.cpf = cpf
@@ -25,6 +27,7 @@ export default class Cliente {
         this.produtosConsumidos = []
         this.servicosConsumidos = []
         this.pets = pet
+        this.idCliente = idCliente
     }
     public get getCpf(): CPF {
         return this.cpf
@@ -46,5 +49,8 @@ export default class Cliente {
     }
     public get getPets(): Array<Pet>{
         return this.pets
+    }
+    public get getId(): number{
+        return this.idCliente
     }
 }

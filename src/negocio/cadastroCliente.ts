@@ -73,8 +73,8 @@ export default class CadastroCliente extends Cadastro {
                     console.log(`Operação não entendida :(`)
             }               
         }
-
-        let cliente = new Cliente(nome, nomeSocial, cpf, telefones, pets);
+        let idCliente = Object.keys(this.clientes).length;
+        let cliente = new Cliente(nome, nomeSocial, cpf, telefones, pets, idCliente);
         this.clientes.push(cliente)
       
         console.log(`\nCadastro concluído :)\n`);
