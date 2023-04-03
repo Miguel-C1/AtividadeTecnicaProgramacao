@@ -12,10 +12,10 @@ export default class Cliente {
     private cpf: CPF
     private rgs: Array<RG>
     private dataCadastro: Date
-    private telefones: Array<Telefone>
-    private produtosConsumidos: Array<Produto>
-    private servicosConsumidos: Array<Servico>
-    private pets: Array<Pet>
+    public telefones: Array<Telefone>
+    public produtosConsumidos: Array<Produto>
+    public servicosConsumidos: Array<Servico>
+    public pets: Array<Pet>
    
     constructor(nome: string, nomeSocial: string, cpf: CPF, telefones: Array<Telefone>, pet: Array<Pet>, idCliente: number) {
         this.nome = nome
@@ -53,4 +53,5 @@ export default class Cliente {
     public get getId(): number{
         return this.idCliente
     }
+
 }

@@ -9,6 +9,7 @@ export default class CadastroTelefone {
     public cadastrar() {
         let ddd = this.entrada.receberTexto('Por favor, Digite o DDD do Telefone: ');
         let numero = this.entrada.receberTexto('Por favor, Digite o número do Telefone: ');
+      
         let telefone = new Telefone(ddd, numero);
         return telefone
     }
