@@ -37,7 +37,7 @@ export default class CadastroCliente extends Cadastro {
         console.log(`1 - Cadastrar Telfone`);
 
         while (execucao) {
-           
+
             let opcao = this.entrada.receberNumero(`Por favor, escolha uma opção: `)
             console.log(opcao);
             switch (opcao) {
@@ -46,6 +46,7 @@ export default class CadastroCliente extends Cadastro {
                     telefones.push(telefone);
                     break;
                 case 0:
+                    execucao = false
                     console.log(`Você parou de realizar os cadastros de telefones!`)
                     break;
                 default:

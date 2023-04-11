@@ -8,13 +8,13 @@ export default class Servico {
         this.idServico = idServico
     }
 
-    public get getNomeProduto(): string {
+    public get getNomeServico(): string {
         return this.nomeServico
     }
     public get getDescricao(): string {
         return this.descricao
     }
-    public get getIdDescricao(): number {
+    public get getIdServico(): number {
         return this.idServico
     }
 }

@@ -16,16 +16,15 @@ export default class DeletarCliente extends Deletar {
     public deletar(): void {
         console.log(`\nInício da exclusão do cliente`);
         let idCliente = this.entrada.receberNumero(`Por favor informe o id do cliente: `)
-        let contadora = 0
-        this.clientes.forEach(cliente => {
-            if (cliente.getId == idCliente) {
-                this.clientes.slice(contadora, 1)
-                console.log(this.clientes)
-                
+        for (let i = 0; i < this.clientes.length; i++) {
+            const cliente = this.clientes[i];
+        
+            if (cliente.getId === idCliente) {
+              this.clientes.splice(i, i+1);
+              console.log(this.clientes);
+              console.log(`CLIENTE DELETADO`);
+              return; // Encerrar o loop depois de remover o cliente
             }
-            contadora = contadora + 1
-        });
+          }
     }
-
-
 }

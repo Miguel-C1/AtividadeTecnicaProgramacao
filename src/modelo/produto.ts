@@ -14,7 +14,7 @@ export default class Produto {
     public get getDescricao(): string {
         return this.descricao
     }
-    public get getIdDescricao(): number {
+    public get getIdProduto(): number {
         return this.idProduto
     }
 }
