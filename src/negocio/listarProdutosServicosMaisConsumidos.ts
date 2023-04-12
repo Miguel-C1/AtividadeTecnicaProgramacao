@@ -41,7 +41,7 @@ export default class ListagemProdustosServicosConsumidos {
       
         // Imprima os 10 produtos mais consumidos
         console.log("Produtos mais consumidos:");
-        for (let i = 0; i < 10 && i < servicosOrdenados.length; i++) {
+        for (let i = 0; i < servicosOrdenados.length; i++) {
           const servicoId = servicosOrdenados[i][0];
           const quantidadeConsumida = servicosOrdenados[i][1];
           const servico = this.servicos.find(p => p.getIdServico === servicoId);
@@ -76,7 +76,7 @@ export default class ListagemProdustosServicosConsumidos {
       
         // Imprima os 10 produtos mais consumidos
         console.log("Produtos mais consumidos:");
-        for (let i = 0; i < 10 && i < produtosOrdenados.length; i++) {
+        for (let i = 0; i < produtosOrdenados.length; i++) {
           const produtoId = produtosOrdenados[i][0];
           const quantidadeConsumida = produtosOrdenados[i][1];
           const produto = this.produtos.find(p => p.getIdProduto === produtoId);

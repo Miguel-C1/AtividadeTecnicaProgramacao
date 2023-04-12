@@ -12,9 +12,10 @@ import DeletarProduto from "../negocio/deletarProduto";
 import ListagemClientes from "../negocio/listagemClientes";
 import ListagemProdutos from "../negocio/listagemProdutos";
 import ListagemServicos from "../negocio/listagemServicos";
-import Listagem from "../negocio/listagem";
 import RegistrarConsumo from "../negocio/registrarConsumo";
 import ListagemProdustosServicosConsumidos from "../negocio/listarProdutosServicosMaisConsumidos";
+import ListarCincoClientesMaisConsumos from "../negocio/listarCincoClientesMaisConsumo";
+import ListarDezClientesMaisConsumos from "../negocio/listarDezClientesMaisConsumiram";
 
 console.log(`Bem-vindo ao melhor sistema de gerenciamento de pet shops e clínicas veterinarias`)
 let empresa = new Empresa()
@@ -41,6 +42,10 @@ while (execucao) {
     console.log('--- LISTAGEM ESPECIAIS ---')
     console.log('14 - Listar Serviços mais consumidos');
     console.log('15 - Listar Produtos mais consumidos');
+    console.log('16 - Listar 5 clientes que mais consumiram SERVIÇOS em valor')
+    console.log('17 - Listar 5 clientes que mais consumiram PRODUTOS em valor')
+    console.log('18 - Listar 10 clientes que mais consumiram SERVIÇOS em quantidade')
+    console.log('19 - Listar 10 clientes que mais consumiram PRODUTOS em quantidade')
 
     let entrada = new Entrada()
     let opcao = entrada.receberNumero(`Por favor, escolha uma opção: `)
@@ -105,6 +110,22 @@ while (execucao) {
         case 15:
             let listagemProdutosConsumidos = new ListagemProdustosServicosConsumidos(empresa.getClientes, empresa.getProdutos, empresa.getServicos)
             listagemProdutosConsumidos.listarProdutosMaisConsumidos()
+            break;
+        case 16:
+            let listagemCincoClientesMaisConsumoServico = new ListarCincoClientesMaisConsumos(empresa.getClientes)
+            listagemCincoClientesMaisConsumoServico.listarClientesPorConsumoDeServico()
+            break;
+        case 17:
+            let listagemCincoClientesMaisConsumoProduto = new ListarCincoClientesMaisConsumos(empresa.getClientes)
+            listagemCincoClientesMaisConsumoProduto.listarClientesPorConsumoDeProdutos()
+            break;
+        case 18:
+            let listagemDezClienteMaisConsumoServicos = new ListarDezClientesMaisConsumos(empresa.getClientes)
+            listagemDezClienteMaisConsumoServicos.listarClientesPorQuantidadeDeServicos()
+            break;
+        case 19:
+            let listagemDezClienteMaisConsumoProdutos = new ListarDezClientesMaisConsumos(empresa.getClientes)
+            listagemDezClienteMaisConsumoProdutos.listarClientesPorQuantidadeDeProdutos()
             break;
         case 0:
             execucao = false

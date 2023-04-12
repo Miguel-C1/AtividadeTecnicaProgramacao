@@ -18,10 +18,12 @@ export default class AlteracaoProduto extends Alteracao {
         let idServico = this.entrada.receberNumero(`Por favor informe o id do Serviço: `)
         this.servicos.forEach(servico => {
             if (servico.getIdServico == idServico) {
-                let nomeServico = this.entrada.receberTexto('Por favor Informe o novo Nome do Serviço: ')
-                let descricaoServico = this.entrada.receberTexto('Por favor Informe a nova Descrição do Serviço: ')
+                let nomeServico = this.entrada.receberTexto('Por favor, Informe o novo Nome do Serviço: ')
+                let descricaoServico = this.entrada.receberTexto('Por favor, Informe a nova Descrição do Serviço: ')
+                let valorServico = this.entrada.receberNumero('Por favor, Informe o Novo Valor do serviço: ')
                 servico.nomeServico = nomeServico
                 servico.descricao = descricaoServico
+                servico.valor = valorServico
             }
         });
     }

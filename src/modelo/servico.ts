@@ -2,9 +2,12 @@ export default class Servico {
     private idServico : number
     public nomeServico: string
     public descricao: string
-    constructor(nomeServico: string, descricao: string, idServico: number) {
+    public valor: number
+
+    constructor(nomeServico: string, descricao: string, valor:number , idServico: number) {
         this.nomeServico = nomeServico
         this.descricao = descricao
+        this.valor = valor
         this.idServico = idServico
     }
 
@@ -16,5 +19,8 @@ export default class Servico {
     }
     public get getIdServico(): number {
         return this.idServico
+    }
+    public get getValor(): number {
+        return this.valor
     }
 }

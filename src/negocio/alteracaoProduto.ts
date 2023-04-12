@@ -21,10 +21,12 @@ export default class AlteracaoProduto extends Alteracao {
         this.produtos.forEach(produto => {
             if (produto.getIdProduto == idProduto) {
 
-                let nomeProduto = this.entrada.receberTexto('Por favor Informe o novo Nome do produto: ')
-                let descricaoProduto = this.entrada.receberTexto('Por favor Informe a nova Descrição do produto: ')
+                let nomeProduto = this.entrada.receberTexto('Por favor, Informe o novo Nome do produto: ')
+                let descricaoProduto = this.entrada.receberTexto('Por favor, Informe a nova Descrição do produto: ')
+                let valorProduto = this.entrada.receberNumero('Por favor, Informe o novo Valor do Produto: ')
                 produto.nomeProduto = nomeProduto
                 produto.descricao = descricaoProduto
+                produto.valor = valorProduto
             }
         });
 

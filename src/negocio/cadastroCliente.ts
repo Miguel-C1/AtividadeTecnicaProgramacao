@@ -2,6 +2,7 @@ import Entrada from "../io/entrada"
 import Cliente from "../modelo/cliente"
 import CPF from "../modelo/cpf"
 import Pet from "../modelo/pet"
+import RG from "../modelo/rg"
 import Telefone from "../modelo/telefone"
 import Cadastro from "./cadastro"
 import CadastroPet from "./cadastroPet"
@@ -32,14 +33,42 @@ export default class CadastroCliente extends Cadastro {
         let telefones: Array<Telefone> = []
         let cadastrarTelefone = new CadastroTelefone
 
+        let rgs: Array<RG> = []
+
+        
+        console.log(`Opções:`);
+        console.log(`0 - Parar de Cadastrar RGs`);
+        console.log(`1 - Cadastrar RG`);
+
+
+        while (execucao) {
+            
+            let opcao = this.entrada.receberNumero(`Por favor, escolha uma opção: `)
+            switch (opcao) {
+                case 1:
+                    let telefone = cadastrarTelefone.cadastrar()
+                    telefones.push(telefone);
+                    break;
+                case 0:
+                    execucao = false
+                    console.log(`Você parou de realizar os cadastros de telefones!`)
+                    break;
+                default:
+                    console.log(`Operação não entendida :(`)
+            }
+            
+        }
+
+
         console.log(`Opções:`);
         console.log(`0 - Parar de Cadastrar Telefone`);
         console.log(`1 - Cadastrar Telfone`);
 
+        execucao = true
+
         while (execucao) {
 
             let opcao = this.entrada.receberNumero(`Por favor, escolha uma opção: `)
-            console.log(opcao);
             switch (opcao) {
                 case 1:
                     let telefone = cadastrarTelefone.cadastrar()

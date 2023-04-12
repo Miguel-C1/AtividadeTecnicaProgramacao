@@ -53,5 +53,8 @@ export default class Cliente {
     public get getId(): number{
         return this.idCliente
     }
+    public get getNome(): string {
+        return this.nome
+    }
 
 }
