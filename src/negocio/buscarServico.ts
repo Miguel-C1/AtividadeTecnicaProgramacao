@@ -20,7 +20,7 @@ export default class BuscarServico {
       
         const nomeServico = servicoEncontrado.getDescricao;
         const descricao = servicoEncontrado.getDescricao;
-        const servico = new Servico(nomeServico, descricao, this.idServico);
+        const servico = new Servico(nomeServico, descricao, servicoEncontrado.getValor ,servicoEncontrado.getIdServico);
     
         return servico;
       }
