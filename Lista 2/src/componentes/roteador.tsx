@@ -40,10 +40,10 @@ export default class Roteador extends Component<{}, state>{
             case 'Listar Clientes':
                 return (<>
                     {barraNavegacao}
-                    <ListaCliente tema="#e3f2fd"/>
+                    <ListaCliente tema="#e3f2fd" seletorView={this.selecionarView}/>
                 </>)
                 break;
-            case 'Produtos':
+            case 'Cadastrar Cliente':
                 return (
                     <>
                         {barraNavegacao}

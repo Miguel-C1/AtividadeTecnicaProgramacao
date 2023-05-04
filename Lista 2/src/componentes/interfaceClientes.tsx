@@ -20,11 +20,7 @@ export default class InterfaceCliente extends Component<props>{
                     <button type="button" className="btn btn-outline-primary" onClick={(e) => this.props.seletorView('Cadastrar Cliente', e)}>{'Cadastrar Cliente'}</button>
                     </li>
                     <br />
-                    <li key={'DeletarCliente'} >
-                        <button type="button" className="btn btn-outline-primary" onClick={(e) => this.props.seletorView('DeletarCliente', e)}>{'Deletar Cliente'}</button>
-                    </li>
                 </ul>
-
             </div>
         )
     }
