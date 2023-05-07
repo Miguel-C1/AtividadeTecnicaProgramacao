@@ -12,6 +12,11 @@ import FormularioAlterarProduto from "./alterarProduto";
 import FormularioAlterarServico from "./alterarServico";
 import FormularioCadastroProduto from "./formularioCadastroProduto";
 import FormularioCadastroServico from "./formularioCadastroServico";
+import FormularioCadastroConsumo from "./cadastroConsumo";
+import ListaProdutosServicosConsumidos from "./listaProdutosServicosConsumidos";
+import ListaClienteMaisConsumiramQuantidade from "./listaListagemClientesConsumiram";
+import ListaClienteMaisConsumiramValor from "./listaClientesMaisConsumiram";
+import InterfaceListagem from "./interfaceListagem";
 
 type state = {
     tela: string
@@ -35,9 +40,17 @@ export default class Roteador extends Component<{}, state>{
     }
 
     render() {
-        let barraNavegacao = <BarraNavegacao seletorView={this.selecionarView} tema="#e3f2fd" botoes={['Clientes', 'Produtos', 'Servicos']} />
+        let barraNavegacao = <BarraNavegacao seletorView={this.selecionarView} tema="#e3f2fd" botoes={['Clientes', 'Produtos', 'Servicos', 'Listagens Especiais']} />
         
         switch (this.state.tela) {
+            case 'Listagens Especiais':
+                return (
+                    <>
+                        {barraNavegacao}
+                        <InterfaceListagem tema="#e3f2fd" seletorView={this.selecionarView} />
+                    </>
+                )
+                break;
             case 'Clientes':
                 return (
                     <>
@@ -119,6 +132,38 @@ export default class Roteador extends Component<{}, state>{
                         <FormularioCadastroServico tema="#e3f2fd" />
                     </>
                 )
+            case 'Registrar Consumo do Cliente':
+                return (
+                    <>
+                        {barraNavegacao}
+                        <FormularioCadastroConsumo tema="#e3f2fd" />
+                    </>
+                )
+            case 'Listagem dos 10 clientes que mais consumiram em quantidade':
+                return (
+                    <>
+                        {barraNavegacao}
+                        <ListaClienteMaisConsumiramQuantidade tema="#e3f2fd" />
+                    </>
+                )
+                break;
+            case 'Listagem geral dos serviços e produtos mais consumidos em quantidade':
+                return (
+                    <>
+                        {barraNavegacao}
+                        <ListaProdutosServicosConsumidos tema="#e3f2fd" />
+                    </>
+                )
+                break;
+            case 'Listagem dos 5 clientes que mais consumiram em valor':
+                return (
+                    <>
+                        {barraNavegacao}
+                        <ListaClienteMaisConsumiramValor tema="#e3f2fd" />
+                    </>
+                )
+                break;
+
         }
     }
 }
