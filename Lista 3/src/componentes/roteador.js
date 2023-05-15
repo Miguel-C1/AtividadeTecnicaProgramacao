@@ -14,6 +14,10 @@ import InterfaceServico from "./InterfaceServiço";
 import ListaServico from "./listaServico";
 import FormularioAlterarServico from "./formularioAlteracaoServico";
 import FormularioCadastroServico from "./formularioCadastroServico";
+import ListaClientesMaisConsumiram from "./listaClientesMaisConsumiram";
+import InterfaceListagem from "./InterfaceListagem";
+import ListaProdutosServicosConsumidos from "./listaProdutosServicosConsumidos";
+import ListaClienteMaisConsumiramQuantidade from "./listaListagemClientesConsumiram";
 
 export default function Roteador() {
     const [tela, setTela] = useState('Clientes')
@@ -120,10 +124,31 @@ export default function Roteador() {
             return (
                 <>
                     <BarraNavegacao seletorView={selecionarView} tema="#e3f2fd" botoes={['Clientes', 'Produtos', 'Serviços', 'Listagens Especiais']} />
-                    <FormularioCadastroCliente tema="#e3f2fd" />
+                    <InterfaceListagem tema="#e3f2fd" />
                 </>
             )
-        }
+        } else if (tela === 'Listagem dos 10 clientes que mais consumiram em quantidade') {
+            return (
+                <>
+                    <BarraNavegacao seletorView={selecionarView} tema="#e3f2fd" botoes={['Clientes', 'Produtos', 'Serviços', 'Listagens Especiais']} />
+                    <ListaClienteMaisConsumiramQuantidade tema="#e3f2fd" />
+                </>
+            )
+        } else if (tela === 'Listagem geral dos serviços e produtos mais consumidos em quantidade') {
+            return (
+                <>
+                    <BarraNavegacao seletorView={selecionarView} tema="#e3f2fd" botoes={['Clientes', 'Produtos', 'Serviços', 'Listagens Especiais']} />
+                    <ListaProdutosServicosConsumidos tema="#e3f2fd" />
+                </>
+            )
+        } else if (tela === 'Listagem dos 5 clientes que mais consumiram em valor') {
+            return (
+                <>
+                    <BarraNavegacao seletorView={selecionarView} tema="#e3f2fd" botoes={['Clientes', 'Produtos', 'Serviços', 'Listagens Especiais']} />
+                    <ListaClientesMaisConsumiram tema="#e3f2fd" />
+                </>
+            )
+        }   
     }
 
     return (
