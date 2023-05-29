@@ -1,80 +1,80 @@
 // This is your Prisma schema file,// learn more about it in the docs: https://pris.ly/d/prisma-schemagenerator 
 
 generator client {
-    provider = "prisma-client-js"
+  provider = "prisma-client-js"
 }
 
 datasource db {
-    provider = "mysql"
-    url      = env("DATABASE_URL")
+  provider = "mysql"
+  url      = env("DATABASE_URL")
 }
 
 model Cliente {
-    id             Int        @id @default(autoincrement())
-    nome           String
-    nomeSocial     String
-    CPF            String
-    dataEmissaoCpf DateTime
-    dataCadastro   DateTime
-    Pet            Pet[]
-    Telefone       Telefone[]
-    RG             RG[]
-    Compras        Compras[]
+  id             Int        @id @default(autoincrement())
+  nome           String
+  nomeSocial     String
+  CPF            String
+  dataEmissaoCpf DateTime
+  dataCadastro   DateTime
+  Pet            Pet[]
+  Telefone       Telefone[]
+  RG             RG[]
+  Compras        Compras[]
 
-    @@map("clientes")
+  @@map("clientes")
 }
 
 model Telefone {
-    id        Int     @id @default(autoincrement())
-    ddd       String
-    numero    String
-    Cliente   Cliente @relation(fields: [clienteId], references: [id])
-    clienteId Int
+  id        Int     @id @default(autoincrement())
+  ddd       String
+  numero    String
+  Cliente   Cliente @relation(fields: [clienteId], references: [id])
+  clienteId Int
 
-    @@map("telefones")
+  @@map("telefones")
 }
 
 model RG {
-    id          Int      @id @default(autoincrement())
-    valor       String
-    dataEmissao DateTime
-    Cliente     Cliente  @relation(fields: [clienteId], references: [id])
-    clienteId   Int
+  id          Int      @id @default(autoincrement())
+  valor       String
+  dataEmissao DateTime
+  Cliente     Cliente  @relation(fields: [clienteId], references: [id])
+  clienteId   Int
 
-    @@map("rgs")
+  @@map("rgs")
 }
 
 model Pet {
-    id        Int       @id @default(autoincrement())
-    nome      String
-    tipo      String
-    raca      String
-    genero    String
-    Cliente   Cliente   @relation(fields: [clienteId], references: [id])
-    clienteId Int
-    Compras   Compras[]
+  id        Int       @id @default(autoincrement())
+  nome      String
+  tipo      String
+  raca      String
+  genero    String
+  Cliente   Cliente   @relation(fields: [clienteId], references: [id])
+  clienteId Int
+  Compras   Compras[]
 
-    @@map("pets")
+  @@map("pets")
 }
 
 model ProdutoServico {
-    id      Int       @id @default(autoincrement())
-    tipo    String
-    valor   Float
-    Compras Compras[]
+  id      Int       @id @default(autoincrement())
+  tipo    String
+  valor   Float
+  Compras Compras[]
 
-    @@map("produtosServicos")
+  @@map("produtosServicos")
 }
 
 model Compras {
-    id               Int            @id @default(autoincrement())
-    quantidade       Float
-    Pet              Pet?           @relation(fields: [petId], references: [id])
-    Cliente          Cliente        @relation(fields: [clienteId], references: [id])
-    ProdutoServico   ProdutoServico @relation(fields: [produtoServicoId], references: [id])
-    clienteId        Int
-    produtoServicoId Int
-    petId            Int?
+  id               Int            @id @default(autoincrement())
+  quantidade       Float
+  Pet              Pet?           @relation(fields: [petId], references: [id])
+  Cliente          Cliente        @relation(fields: [clienteId], references: [id])
+  ProdutoServico   ProdutoServico @relation(fields: [produtoServicoId], references: [id])
+  clienteId        Int
+  produtoServicoId Int
+  petId            Int?
 
-    @@map("compras")
+  @@map("compras")
 }
