@@ -59,6 +59,7 @@ model Pet {
 
 model ProdutoServico {
   id      Int       @id @default(autoincrement())
+  nome    String
   tipo    String
   valor   Float
   Compras Compras[]
