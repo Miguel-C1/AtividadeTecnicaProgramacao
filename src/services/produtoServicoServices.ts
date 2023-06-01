@@ -39,7 +39,7 @@ class ProdutoServico {
         const produtoServico = await prisma.produtoServico.findMany({
             where: {
                 nome: {
-                    startswith: nome
+                    startsWith: nome
                 },
                 tipo: 'SERVICO'
             }
@@ -50,7 +50,7 @@ class ProdutoServico {
         const produtoServico = await prisma.produtoServico.findMany({
             where: { 
                 nome: {
-                    startswith: nome
+                    startsWith: nome
                 },
                 tipo: 'PRODUTO'
             }
