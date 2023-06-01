@@ -38,9 +38,9 @@ class ClienteService {
   async delete(id: number) {
     await prisma.cliente.delete({
       where: {
-        id: id
-      }
-    })
+        id: id,
+      },
+    });
   }
 
   async update(id: number, data: any) {
@@ -49,13 +49,13 @@ class ClienteService {
         nome: data.nome,
         nomeSocial: data.nomeSocial,
         dataEmissaoCpf: data.dataEmissao,
-        CPF: data.CPF
+        CPF: data.CPF,
       },
       where: {
-        id: id
-      }
+        id: id,
+      },
     });
-    return cliente
+    return cliente;
   }
 
   async post(data: any) {
@@ -65,10 +65,10 @@ class ClienteService {
         nomeSocial: data.nomeSocial,
         dataEmissaoCpf: data.dataEmissao,
         dataCadastro: new Date(),
-        CPF: data.CPF
-      }
+        CPF: data.CPF,
+      },
     });
-    return cliente
+    return cliente;
   }
   //
 }
