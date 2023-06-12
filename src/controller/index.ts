@@ -1,0 +1,6 @@
+export { default as cliente } from "./cliente"
+export { default as compras } from "./compras"
+export { default as pet } from "./pet"
+export { default as produtoServico } from "./produtoServico"
+export { default as rg } from "./rg"
+export { default as telefone } from "./telefone"
