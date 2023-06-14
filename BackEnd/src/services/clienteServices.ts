@@ -48,8 +48,8 @@ class ClienteService {
       data: {
         nome: data.nome,
         nomeSocial: data.nomeSocial,
-        dataEmissaoCpf: data.dataEmissao,
-        CPF: data.CPF,
+        dataEmissaoCpf: new Date(data.dataEmissaoCpf),
+        CPF: data.cpf,
       },
       where: {
         id: id,
@@ -63,9 +63,9 @@ class ClienteService {
       data: {
         nome: data.nome,
         nomeSocial: data.nomeSocial,
-        dataEmissaoCpf: data.dataEmissao,
+        dataEmissaoCpf: new Date(data.dataEmissaoCpf),
         dataCadastro: new Date(),
-        CPF: data.CPF,
+        CPF: data.cpf,
       },
     });
     return cliente;

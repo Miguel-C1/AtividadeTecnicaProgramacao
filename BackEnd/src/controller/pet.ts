@@ -20,13 +20,13 @@ class Pet {
   }
 
   async post(req: Request, res: Response) {
-    const { data } = req.body;
+    const  data  = req.body;
     const pet = await petServices.post(data);
     return res.status(201).json(pet);
   }
 
   async put(req: Request, res: Response) {
-    const { data } = req.body;
+    const  data  = req.body;
     const { id } = req.params;
     const pet = await petServices.update(data, parseInt(id));
     return res.status(201).json(pet);

@@ -8,9 +8,9 @@ class TelefoneService {
     return telefone;
   }
   async getId(id: number) {
-    const telefone = await prisma.telefone.findUnique({
+    const telefone = await prisma.telefone.findFirst({
       where: {
-        id: id,
+        clienteId: id,
       },
     });
     return telefone;

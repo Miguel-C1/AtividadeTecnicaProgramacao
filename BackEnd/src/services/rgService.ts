@@ -8,9 +8,9 @@ class RgService {
     return rg;
   }
   async getId(id: number) {
-    const rg = await prisma.rG.findUnique({
+    const rg = await prisma.rG.findFirst({
       where: {
-        id: id,
+        clienteId: id,
       },
     });
     return rg;
@@ -29,17 +29,17 @@ class RgService {
     const rg = await prisma.rG.create({
       data: {
         valor: data.valor,
-        dataEmissao: data.dataEmissao,
+        dataEmissao: new Date(data.dataEmissao),
         clienteId: data.clienteId,
       },
     });
     return rg;
   }
-  async put(id: number, data: any) {
+  async put( data: any, id: number) {
     const rg = await prisma.rG.update({
       data: {
         valor: data.valor,
-        dataEmissao: data.dataEmissao,
+        dataEmissao: new Date(data.dataEmissao),
       },
       where: {
         id: id,

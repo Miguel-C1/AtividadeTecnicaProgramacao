@@ -17,12 +17,12 @@ class Rg {
     return res.status(200).json(rg);
   }
   async post(req: Request, res: Response) {
-    const { data } = req.body;
+    const  data  = req.body;
     const rg = await rgService.post(data);
     return res.status(201).json(rg);
   }
   async put(req: Request, res: Response) {
-    const { data } = req.body;
+    const  data  = req.body;
     const { id } = req.params;
     const rg = await rgService.put(data, parseInt(id));
     return res.status(200).json(rg);

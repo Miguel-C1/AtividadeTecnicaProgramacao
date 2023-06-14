@@ -1,41 +1,62 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
+import { useEffect, useState } from "react";
+
 export default function ListaCliente(props) {
-    let tema = props.tema
+    const [clientes, setClientes] = useState([]);
+
+    useEffect(() => {
+        fetchData();
+    }, []);
+
+    const fetchData = async () => {
+        try {
+            const response = await fetch("http://localhost:3001/cliente/", {
+                method: "GET",
+            });
+            const data = await response.json();
+            setClientes(data);
+        } catch (error) {
+            console.log("Ocorreu um erro:", error);
+        }
+    };
+
     return (
         <div className="container-fluid">
-                <div className="list-group">
-                    <table className="table table-striped">
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Nome</th>
-                                <th scope="col">CPF</th>
-                                <th scope="col"></th>
+            <div className="list-group">
+                <table className="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">CPF</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {clientes.map((cliente) => (
+                            <tr key={cliente.id}>
+                                <th scope="row">
+                                    <button
+                                        type="button"
+                                        className="btn btn-outline-dark"
+                                        onClick={(e) => props.seletorView("AlterarCliente", e, cliente.id)}
+                                    >
+                                        Alterar
+                                    </button>
+
+                                </th>
+                                <td>{cliente.nome}</td>
+                                <td>{cliente.CPF}</td>
+                                <td>
+                                    <input type="checkbox" name="" id="" />
+                                </td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row"><button type="button" className="btn btn-outline-dark" onClick={(e) => props.seletorView('AlterarCliente', e)}>Alterar</button></th>
-                                <td>Cliente 1</td>
-                                <td>063.442.980-90</td>
-                                <td><input type="checkbox" name="" id="" /></td>
-                            </tr>
-                            <tr>
-                            <th scope="row"><button type="button" className="btn btn-outline-dark" onClick={(e) => props.seletorView('AlterarCliente', e)}>Alterar</button></th>
-                                <td>Cliente 2</td>
-                                <td>168.204.420-33</td>
-                                <td><input type="checkbox" name="" id="" /></td>
-                            </tr>
-                            <tr>
-                            <th scope="row"><button type="button" className="btn btn-outline-dark" onClick={(e) => props.seletorView('AlterarCliente', e)}>Alterar</button></th>
-                                <td>Cliente 3</td>
-                                <td>079.062.520-20</td>
-                                <td><input type="checkbox" name="" id="" /></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <button type="button" className="btn btn-outline-primary">{'Deletar'}</button>
-                </div>
+                        ))}
+                    </tbody>
+                </table>
+                <button type="button" className="btn btn-outline-primary">
+                    Deletar
+                </button>
             </div>
-    )
+        </div>
+    );
 }
