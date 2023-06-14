@@ -30,20 +30,20 @@ class ProdutoServico {
     return res.status(200).json(produtoServico);
   }
   async post(req: Request, res: Response) {
-    const { data } = req.body;
+    const  data  = req.body;
     const produtoServico = await produtoServicoServices.post(data);
     return res.status(201).json(produtoServico);
   }
   async put(req: Request, res: Response) {
     const { id } = req.params;
-    const { data } = req.body;
+    const  data = req.body;
     const produtoServico = await produtoServicoServices.put(data, parseInt(id));
     return res.status(200).json(produtoServico);
   }
   async delete(req: Request, res: Response) {
     const { id } = req.params;
     await produtoServicoServices.delete(parseInt(id));
-    return res.status(204);
+    return res.send("ok");
   }
 }
 

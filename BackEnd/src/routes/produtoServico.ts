@@ -4,7 +4,7 @@ import { produtoServico } from "../controller";
 const router = Router();
 
 router.get("/", produtoServico.get)
-router.get("/:id", produtoServico.getId)
+router.get("/porId/:id", produtoServico.getId)
 router.get("/produto/", produtoServico.getProduto)
 router.get("/servico/", produtoServico.getNomeServico)
 router.get("/produto/:nome", produtoServico.getNomeProduto)

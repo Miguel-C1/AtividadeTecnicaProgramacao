@@ -28,7 +28,7 @@ model Telefone {
   id        Int     @id @default(autoincrement())
   ddd       String
   numero    String
-  Cliente   Cliente @relation(fields: [clienteId], references: [id])
+  Cliente   Cliente @relation(fields: [clienteId], references: [id], onDelete: Cascade)
   clienteId Int
 
   @@map("telefones")
@@ -38,7 +38,7 @@ model RG {
   id          Int      @id @default(autoincrement())
   valor       String
   dataEmissao DateTime
-  Cliente     Cliente  @relation(fields: [clienteId], references: [id])
+  Cliente     Cliente  @relation(fields: [clienteId], references: [id], onDelete: Cascade)
   clienteId   Int
 
   @@map("rgs")
@@ -50,7 +50,7 @@ model Pet {
   tipo      String
   raca      String
   genero    String
-  Cliente   Cliente   @relation(fields: [clienteId], references: [id])
+  Cliente   Cliente   @relation(fields: [clienteId], references: [id], onDelete:Cascade )
   clienteId Int
   Compras   Compras[]
 
@@ -70,9 +70,9 @@ model ProdutoServico {
 model Compras {
   id               Int            @id @default(autoincrement())
   quantidade       Float
-  Pet              Pet?           @relation(fields: [petId], references: [id])
-  Cliente          Cliente        @relation(fields: [clienteId], references: [id])
-  ProdutoServico   ProdutoServico @relation(fields: [produtoServicoId], references: [id])
+  Pet              Pet?           @relation(fields: [petId], references: [id], onDelete: Cascade)
+  Cliente          Cliente        @relation(fields: [clienteId], references: [id], onDelete: Cascade)
+  ProdutoServico   ProdutoServico @relation(fields: [produtoServicoId], references: [id], onDelete: Cascade)
   clienteId        Int
   produtoServicoId Int
   petId            Int?

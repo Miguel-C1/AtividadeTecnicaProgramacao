@@ -47,12 +47,18 @@ export default function FormularioCadastroCliente(props) {
 
     const handleCadastroRg = async (clienteId) => {
         try {
+
+            const rgFormatado = {
+                ...rg,
+                clienteId: clienteId
+            }
+
             const response = await fetch(`http://localhost:3001/rg/`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify(rg)
+                body: JSON.stringify(rgFormatado)
             });
 
             if (response.ok) {
@@ -67,12 +73,16 @@ export default function FormularioCadastroCliente(props) {
 
     const handleCadastroTelefone = async (clienteId) => {
         try {
+            const telefoneFormatado = {
+                ...telefone,
+                clienteId: clienteId
+            }
             const response = await fetch(`http://localhost:3001/telefone/`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify(telefone)
+                body: JSON.stringify(telefoneFormatado)
             });
 
             if (response.ok) {
@@ -101,7 +111,8 @@ export default function FormularioCadastroCliente(props) {
 
                 const clienteCadastrado = await response.json();
                 const clienteId = clienteCadastrado.id;
-
+                console.log(clienteCadastrado)
+                console.log(clienteId)
                 setTelefone({
                     ...telefone,
                     clienteId: clienteId
@@ -110,8 +121,8 @@ export default function FormularioCadastroCliente(props) {
                     ...rg,
                     clienteId: clienteId
                 })
-                await handleCadastroRg();
-                await handleCadastroTelefone(); 
+                await handleCadastroRg(clienteId);
+                await handleCadastroTelefone(clienteId); 
                 console.log("Cliente cadastrado com sucesso");
             } else {
                 console.log("Erro ao cadastrar cliente");

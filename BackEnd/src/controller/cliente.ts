@@ -30,7 +30,7 @@ class Cliente {
   async delete(req: Request, res: Response) {
     const { id } = req.params;
     await clienteServices.delete(parseInt(id));
-    return res.status(200);
+    return res.send("ok");
   }
 }
 

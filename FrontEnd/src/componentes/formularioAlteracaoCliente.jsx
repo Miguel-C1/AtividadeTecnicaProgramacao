@@ -21,6 +21,8 @@ export default function FormularioCadastroCliente(props) {
         dataEmissao: new Date()
     });
 
+
+    
     useEffect(() => {
         fetchData();
     }, []);
@@ -156,12 +158,14 @@ export default function FormularioCadastroCliente(props) {
                         aria-label="Nome"
                         aria-describedby="basic-addon1"
                         name="nome"
+                        required
                         value={cliente.nome}
                         onChange={handleChange}
                     />
                 </div>
                 <div className="input-group mb-3">
                     <input
+                        required
                         type="text"
                         className="form-control"
                         placeholder="Nome social"
@@ -174,6 +178,7 @@ export default function FormularioCadastroCliente(props) {
                 </div>
                 <div className="input-group mb-3">
                     <input
+                        required
                         type="text"
                         className="form-control"
                         placeholder="CPF"
@@ -186,6 +191,7 @@ export default function FormularioCadastroCliente(props) {
                 </div>
                 <div className="input-group mb-3">
                     <input
+                        required
                         type="date"
                         className="form-control"
                         placeholder="Data Emissão CPF"
@@ -198,6 +204,7 @@ export default function FormularioCadastroCliente(props) {
                 </div>
                 <div className="input-group mb-3">
                     <input
+                        required
                         type="text"
                         className="form-control"
                         placeholder="RG"
@@ -210,6 +217,7 @@ export default function FormularioCadastroCliente(props) {
                 </div>
                 <div className="input-group mb-3">
                     <input
+                        required
                         type="date"
                         className="form-control"
                         placeholder="Data Emissão RG"
@@ -222,6 +230,7 @@ export default function FormularioCadastroCliente(props) {
                 </div>
                 <div className="input-group mb-3">
                     <input
+                        required
                         type="text"
                         className="form-control"
                         placeholder="Telefone DDD"
@@ -234,6 +243,7 @@ export default function FormularioCadastroCliente(props) {
                 </div>
                 <div className="input-group mb-3">
                     <input
+                        required
                         type="text"
                         className="form-control"
                         placeholder="Telefone Número"

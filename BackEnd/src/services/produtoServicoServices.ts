@@ -11,7 +11,7 @@ class ProdutoServico {
   async getProduto() {
     const produtoServico = await prisma.produtoServico.findMany({
       where: {
-        tipo: "PRODUTO",
+        tipo: "produto",
       },
     });
     return produtoServico;
@@ -19,7 +19,7 @@ class ProdutoServico {
   async getServico() {
     const produtoServico = await prisma.produtoServico.findMany({
       where: {
-        tipo: "SERVICO",
+        tipo: "servico",
       },
     });
     return produtoServico;
@@ -61,8 +61,8 @@ class ProdutoServico {
     const produtoServico = await prisma.produtoServico.create({
       data: {
         tipo: data.tipo,
-        valor: data.valor,
-        nome: data.new,
+        valor: parseFloat(data.valor),
+        nome: data.nome,
       },
     });
     return produtoServico;

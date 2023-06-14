@@ -36,12 +36,35 @@ class ClienteService {
   }
 
   async delete(id: number) {
-    await prisma.cliente.delete({
-      where: {
-        id: id,
-      },
-    });
+    try {
+      // await prisma.rG.deleteMany({
+      //   where: {
+      //     clienteId: id,
+      //   },
+      // });
+      // await prisma.compras.deleteMany({
+      //   where: {
+      //     clienteId: id,
+      //   },
+      // });
+      // await prisma.pet.deleteMany({
+      //   where: {
+      //     clienteId: id,
+      //   },
+      // });
+      await prisma.cliente.delete({
+        where: {
+          id: id,
+        },
+      });
+  
+      console.log('Registros excluídos com sucesso.');
+    } catch (error) {
+      console.error('Ocorreu um erro ao excluir os registros:', error);
+    }
   }
+  
+  
 
   async update(id: number, data: any) {
     const cliente = await prisma.cliente.update({

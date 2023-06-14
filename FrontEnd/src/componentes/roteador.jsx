@@ -55,7 +55,7 @@ const telas = {
         componente: FormularioCadastroProduto,
         props: {},
     },
-    Serviços: {
+    Servicos: {
         componente: InterfaceServico,
         props: {},
     },
