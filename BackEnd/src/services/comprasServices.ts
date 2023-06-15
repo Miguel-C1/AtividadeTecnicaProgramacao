@@ -7,6 +7,90 @@ class ComprasServices {
     const compras = await prisma.compras.findMany();
     return compras;
   }
+
+  async  getTop10ClientesMaisConsumiram() {
+    const top10Clientes = await prisma.cliente.findMany({
+      include: {
+        Compras: true,
+      },
+    });
+  
+    const clientesComSomaQuantidade = top10Clientes.map((cliente) => {
+      const somaQuantidade = cliente.Compras.reduce(
+        (total, compra) => total + compra.quantidade,
+        0
+      );
+      return {
+        clienteId: cliente.id,
+        nome: cliente.nome,
+        somaQuantidade: somaQuantidade,
+      };
+    });
+  
+    const top10ClientesMaisConsumiram = clientesComSomaQuantidade
+      .sort((a, b) => b.somaQuantidade - a.somaQuantidade)
+      .slice(0, 10);
+  
+    return top10ClientesMaisConsumiram;
+  }
+  
+
+  async  getTopProdutosMaisConsumidos() {
+    const produtosComSomaQuantidade = await prisma.produtoServico.findMany({
+      include: {
+        Compras: true,
+      },
+    });
+
+    const produtosMaisConsumidos = produtosComSomaQuantidade
+      .map((produto) => {
+        const somaQuantidade = produto.Compras.reduce(
+          (total, compra) => total + compra.quantidade,
+          0
+        );
+        return {
+          produtoServicoId: produto.id,
+          nome: produto.nome,
+          somaQuantidade: somaQuantidade,
+        };
+      })
+      .sort((a, b) => b.somaQuantidade - a.somaQuantidade)
+
+  
+    return produtosMaisConsumidos;
+  }
+  
+  async  getTop5ClientesMaisConsumiramEmValor() {
+    const clientesCompras = await prisma.cliente.findMany({
+      include: {
+        Compras: {
+          include: {
+            ProdutoServico: true,
+          },
+        },
+      },
+    });
+  
+    const clientesComValorTotal = clientesCompras.map((cliente) => {
+      const valorTotal = cliente.Compras.reduce(
+        (total, compra) => total + compra.quantidade * compra.ProdutoServico.valor,
+        0
+      );
+      return {
+        clienteId: cliente.id,
+        nome: cliente.nome,
+        valorTotal: valorTotal,
+      };
+    });
+  
+    const top5ClientesMaisConsumiram = clientesComValorTotal
+      .sort((a, b) => b.valorTotal - a.valorTotal)
+      .slice(0, 5);
+  
+    return top5ClientesMaisConsumiram;
+  }
+  
+
   async getId(id: number) {
     const compras = await prisma.compras.findUnique({
       where: {
@@ -38,19 +122,19 @@ class ComprasServices {
     if (data.petId) {
       const compras = await prisma.compras.create({
         data: {
-          petId: data.petId,
-          clienteId: data.clienteId,
-          quantidade: data.quantidade,
-          produtoServicoId: data.produtoServicoId,
+          petId: parseInt(data.petId),
+          clienteId: parseInt(data.clienteId),
+          quantidade: parseFloat(data.quantidade),
+          produtoServicoId: parseInt(data.produtoServicoId),
         },
       });
       return compras;
     } else {
       const compras = await prisma.compras.create({
         data: {
-          clienteId: data.clienteId,
-          quantidade: data.quantidade,
-          produtoServicoId: data.produtoServicoId,
+          clienteId: parseInt(data.clienteId),
+          quantidade: parseFloat(data.quantidade),
+          produtoServicoId: parseInt(data.produtoServicoId),
         },
       });
       return compras;

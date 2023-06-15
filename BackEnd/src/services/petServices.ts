@@ -5,7 +5,8 @@ const prisma = new PrismaClient();
 class petServices {
   async get() {
     const pet = await prisma.pet.findMany({
-      select:{
+      select: {
+        id: true,
         nome: true,
         tipo: true,
         raca: true,
@@ -22,6 +23,15 @@ class petServices {
       where: {
         id: id,
       },
+      select: {
+        id: true,
+        nome: true,
+        tipo: true,
+        raca: true,
+        genero:true,
+        Cliente:{
+        }
+      }
     });
     return pet;
   }

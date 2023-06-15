@@ -40,7 +40,7 @@ export default function ListaPet(props) {
         try {
             await Promise.all(
                 petSelecionado.map(async (usuarioId) => {
-                    await fetch(`http://localhost:3001/produtoServico/${usuarioId}`, {
+                    await fetch(`http://localhost:3001/pet/${usuarioId}`, {
                         method: "DELETE",
                     });
                 })
@@ -49,7 +49,7 @@ export default function ListaPet(props) {
             setPesSelecionados([]);
             fetchData();
         } catch (error) {
-            console.log("Ocorreu um erro ao excluir os Produtos:", error);
+            console.log("Ocorreu um erro ao excluir os Pet:", error);
         }
     };
 
@@ -74,7 +74,7 @@ export default function ListaPet(props) {
                                     <button
                                         type="button"
                                         className="btn btn-outline-dark"
-                                        onClick={(e) => props.seletorView("AlterarProduto", e, pet.id)}
+                                        onClick={(e) => props.seletorView("AlterarPet", e, pet.id)}
                                     >
                                         Alterar
                                     </button>

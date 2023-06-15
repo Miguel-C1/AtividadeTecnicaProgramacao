@@ -35,6 +35,8 @@ class ClienteService {
     return cliente;
   }
 
+  
+
   async delete(id: number) {
     try {
       // await prisma.rG.deleteMany({

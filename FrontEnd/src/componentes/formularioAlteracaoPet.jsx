@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
 
-export default function FormularioCadastroPet(props) {
+export default function FormularioAlteracaoPet(props) {
   const [pet, setPet] = useState({
     nome: "",
     tipo: "",
-    raca: "",
+    raca:"",
     genero: "",
     clienteId: 0,
+    Cliente: {
+      id: 0
+    }
   });
   const [clientes, setClientes] = useState([]);
 
@@ -19,8 +22,9 @@ export default function FormularioCadastroPet(props) {
       const response = await fetch("http://localhost:3001/cliente/", { method: "GET"});
       const data = await response.json();
       setClientes(data);
-      const response2 = await fetch(`http://localhost:3001/pet/${props.id}`, { method: "GET"});
+      const response2 = await fetch(`http://localhost:3001/pet/porId/${props.id}`, { method: "GET"});
       const data2 = await response2.json(); 
+      console.log(data2)
       setPet(data2);
     } catch (error) {
       console.log("Ocorreu um erro ao buscar os clientes:", error);
@@ -37,8 +41,8 @@ export default function FormularioCadastroPet(props) {
 
   const handleCadastro = async () => {
     try {
-      const response = await fetch("http://localhost:3001/pet/", {
-        method: "POST",
+      const response = await fetch(`http://localhost:3001/pet/${props.id}`, {
+        method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
@@ -117,11 +121,10 @@ export default function FormularioCadastroPet(props) {
             className="form-select"
             id="clienteId"
             name="clienteId"
-            value={pet.clienteId}
+            value={pet.Cliente.id}
             onChange={handleChange}
             required
           >
-            <option value="">Selecione um cliente</option>
             {clientes.map((cliente) => (
               <option key={cliente.id} value={cliente.id}>
                 {cliente.nome}
@@ -139,7 +142,7 @@ export default function FormularioCadastroPet(props) {
             }}
             style={{ background: tema }}
           >
-            Cadastrar
+            Alterar
           </button>
         </div>
       </form>

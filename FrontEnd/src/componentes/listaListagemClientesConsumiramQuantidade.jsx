@@ -2,7 +2,9 @@
 
 import { useEffect, useState } from "react";
 
-export default function ListaProdutosServicosConsumidos(props) {
+
+export default function ListaClienteMaisConsumiramQuantidade(props) {
+
 
     const [compra, setCompras] = useState([])
 
@@ -12,7 +14,7 @@ export default function ListaProdutosServicosConsumidos(props) {
 
     const fetchData = async () => {
         try {
-            const response = await fetch("http://localhost:3001/compras/listagem/Consumo-qtd-prd", {
+            const response = await fetch("http://localhost:3001/compras/listagem/Consumo-qtd-cli", {
                 method: "GET",
             });
             const data = await response.json();
@@ -22,6 +24,7 @@ export default function ListaProdutosServicosConsumidos(props) {
         }
     };
 
+
     let tema = props.tema
     return (
         <div className="container-fluid">
@@ -30,13 +33,13 @@ export default function ListaProdutosServicosConsumidos(props) {
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Descrição</th>
-                            <th scope="col">Quantidade</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Quantidade Consumida</th>
                         </tr>
                     </thead>
                     <tbody>
                         {compra.map((compra, index) => (
-                            <tr key={compra.id}>
+                            <tr key={compra.clienteId}>
                                 <th scope="row">
                                     {index+1}
                                 </th>

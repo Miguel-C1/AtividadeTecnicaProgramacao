@@ -34,7 +34,7 @@ class Pet {
   async delete(req: Request, res: Response) {
     const { id } = req.params;
     await petServices.delete(parseInt(id));
-    return res.status(200);
+    return res.send("OK");
   }
 }
 

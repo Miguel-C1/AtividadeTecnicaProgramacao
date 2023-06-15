@@ -15,11 +15,12 @@ import FormularioCadastroProduto from "./formularioCadastroProduto";
 import FormularioCadastroConsumoCliente from "./formularioCadastroConsumoCliente";
 import ListaServico from "./listaServico";
 import ListaPet from "./listaPet";
+import FormularioAlteracaoPet from "./formularioAlteracaoPet";
 import FormularioAlterarServico from "./formularioAlteracaoServico";
 import FormularioCadastroServico from "./formularioCadastroServico";
 import ListaClientesMaisConsumiram from "./listaClientesMaisConsumiram";
 import ListaProdutosServicosConsumidos from "./listaProdutosServicosConsumidos";
-import ListaClienteMaisConsumiramQuantidade from "./listaListagemClientesConsumiram";
+import ListaClienteMaisConsumiramQuantidade from "./listaListagemClientesConsumiramQuantidade";
 
 const telas = {
     Clientes: {
@@ -92,6 +93,10 @@ const telas = {
     },
     "Listar Pet": {
         componente: ListaPet,
+        props: {},
+    },
+    "AlterarPet": {
+        componente: FormularioAlteracaoPet,
         props: {},
     },
     "Cadastrar Pet": {

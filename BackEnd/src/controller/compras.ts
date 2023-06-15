@@ -19,6 +19,19 @@ class Compras {
         const compra = await comprasServices.post(data)
         return res.json(compra)
     }
+    async getTop10ClientesMaisConsumiram(req: Request, res: Response) {
+        const compra = await comprasServices.getTop10ClientesMaisConsumiram();
+        return res.json(compra)
+    }
+    async getTopProdutosMaisConsumidos(req: Request, res: Response) {
+        const compra = await comprasServices.getTopProdutosMaisConsumidos();
+        return res.json(compra)
+    }
+    async getTop5ClientesMaisConsumiramEmValor(req: Request, res: Response) {
+        const compra = await comprasServices.getTop5ClientesMaisConsumiramEmValor();
+        return res.json(compra)
+    }
+  
 
     async put(req: Request, res: Response) {
         const data = req.body
