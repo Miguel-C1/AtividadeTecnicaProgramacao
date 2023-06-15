@@ -4,6 +4,8 @@ import InterfaceCliente from "./InterfaceCliente";
 import InterfaceProduto from "./InterfaceProduto";
 import InterfaceServico from "./InterfaceServiço";
 import InterfaceListagem from "./InterfaceListagem";
+import InterfacePet from "./InterfacePet";
+import FormularioCadastroPet from "./formularioCadastroPet";
 import ListaCliente from "./listaCliente";
 import FormularioCadastroCliente from "./formularioCadastroCliente";
 import FormularioAlteracaoCliente from "./formularioAlteracaoCliente";
@@ -12,6 +14,7 @@ import FormularioAlteracaoProduto from "./formularioAlteracaoProduto";
 import FormularioCadastroProduto from "./formularioCadastroProduto";
 import FormularioCadastroConsumoCliente from "./formularioCadastroConsumoCliente";
 import ListaServico from "./listaServico";
+import ListaPet from "./listaPet";
 import FormularioAlterarServico from "./formularioAlteracaoServico";
 import FormularioCadastroServico from "./formularioCadastroServico";
 import ListaClientesMaisConsumiram from "./listaClientesMaisConsumiram";
@@ -87,6 +90,18 @@ const telas = {
         componente: ListaClientesMaisConsumiram,
         props: {},
     },
+    "Listar Pet": {
+        componente: ListaPet,
+        props: {},
+    },
+    "Cadastrar Pet": {
+        componente: FormularioCadastroPet,
+        props: {},
+    },
+    "Pet": {
+        componente: InterfacePet,
+        props: {},
+    },
 };
 
 export default function Roteador() {
@@ -97,7 +112,7 @@ export default function Roteador() {
     const selecionarView = (valor, e, clienteId) => {
         e.preventDefault();
         setTela(valor);
-        setClienteId(clienteId); // Adicione essa linha para armazenar o ID do cliente
+        setClienteId(clienteId); 
     };
 
 
@@ -111,8 +126,9 @@ export default function Roteador() {
                 botoes={[
                     "Clientes",
                     "Produtos",
-                    "Serviços",
+                    "Servicos",
                     "Listagens Especiais",
+                    "Pet",
                 ]}
             />
             <ViewAtual tema="#e3f2fd" id={clienteId} seletorView={selecionarView} {...telas[tela].props} />

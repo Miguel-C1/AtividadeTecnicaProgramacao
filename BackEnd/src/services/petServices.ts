@@ -4,7 +4,16 @@ const prisma = new PrismaClient();
 
 class petServices {
   async get() {
-    const pet = await prisma.pet.findMany();
+    const pet = await prisma.pet.findMany({
+      select:{
+        nome: true,
+        tipo: true,
+        raca: true,
+        Cliente:{
+
+        }
+      }
+    });
     return pet;
   }
 
@@ -33,7 +42,7 @@ class petServices {
         tipo: data.tipo,
         raca: data.raca,
         genero: data.genero,
-        clienteId: data.id,
+        clienteId: parseInt(data.clienteId),
       },
     });
     return pet;
