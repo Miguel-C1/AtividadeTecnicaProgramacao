@@ -6,9 +6,10 @@ Para rodar a Lista cinco, é necessário realizar os seguintes comandos no promp
 - Execute o comando `npm install`
 - Crie um arquivo .env na pasta BackEnd com o seguinte conteúdo:
 
- `DATABASE_URL="mysql://root:senha@localhost:3306/nameDatabase"`
- 
- `DATABASE_URL_WITH_SCHEMA=${DATABASE_URL}?schema=public`
+```plaintext
+DATABASE_URL="mysql://root:senha@localhost:3306/nameDatabase"
+DATABASE_URL_WITH_SCHEMA=${DATABASE_URL}?schema=public
+```
 
 **Certifique-se de substituir "senha", "localhost:3306", "nameDatabase" e outros detalhes necessários no arquivo .env, conforme a configuração do seu ambiente.**
 
