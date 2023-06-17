@@ -15,7 +15,9 @@ export default class CadastroProduto extends Cadastro {
         let nomeServico = this.entrada.receberTexto('Por favor, informe o nome do Serviço: ')
         let descricao = this.entrada.receberTexto('Por favor, faça uma breve descrição do Serviço: ')
         let valorServico = this.entrada.receberNumero('Por favor, Informe o Novo Valor do serviço: ')
-        let idProduto = Object.keys(this.servicos).length;
+
+        let idProduto = this.servicos[this.servicos.length - 1].getIdServico + 1;
+
         let servico = new Servico(nomeServico, descricao, valorServico,idProduto)
         this.servicos.push(servico)
     }  

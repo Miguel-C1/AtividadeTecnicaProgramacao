@@ -11,7 +11,7 @@ export default class CadastroPet {
         let raca = this.entrada.receberTexto('Por favor, Digite a raça do Pet: ');
         let genero = this.entrada.receberTexto('Por favor, Digite o genêro do Pet: ');
         let tipo = this.entrada.receberTexto('Por favor, Digite o tipo do Pet: ');
-        let idPet = Object.keys(pets).length;
+        let idPet = pets[pets.length - 1].getIdPet + 1;
         let pet = new Pet(nome, raca, genero, tipo, idPet);
         return pet
     }
